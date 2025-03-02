@@ -1,10 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import Title from './title';
+import TopMenu from './TopMenu';
+import CounterGrid from './counters/CounterGrid';
 
 const root = createRoot(document.body);
 root.render(
     <>
-        <h1> Hello World from React! </h1>
-        <Title />
+        <TopMenu />
+        <CounterGrid />
     </>
 );

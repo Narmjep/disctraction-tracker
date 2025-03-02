@@ -27,7 +27,7 @@
  */
 
 import './index.css';
-import './app/app.tsx'
+import './app/App'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
