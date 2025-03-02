@@ -2,7 +2,7 @@ import InputModal from "./InputModal";
 import { useState } from 'react';
 
 type TopMenuProps = {
-    addCounter: (label: string) => boolean
+    addCounter: (label: string) => Promise<boolean>
 }
 
 function TopMenu({addCounter} : TopMenuProps) {
@@ -14,9 +14,27 @@ function TopMenu({addCounter} : TopMenuProps) {
     //
     const [isOpen, setIsOpen] = useState(false);
 
-    const onSubmit = (label: string) => {
+    const onSubmit = async (label: string) => {
        if (label.trim() !== "") {
-            addCounter(label);
+            let res : boolean = await addCounter(label);
+            //Error effect
+            if (!res) {
+                let btn = document.getElementById("AddCunterBtn");
+                if (!btn){
+                    console.log("AddCounterBtn not found");
+                    return;
+                }
+                let txt = btn.innerHTML;
+                btn.classList.add("btn-danger");
+                btn.setAttribute("disabled", "true");
+                btn.innerText = "Error";
+
+                setTimeout(() => {
+                    btn.classList.remove("btn-danger");
+                    btn.removeAttribute("disabled");
+                    btn.innerText = txt;
+                }, 1500);
+            }
        }
     }
 
@@ -24,7 +42,7 @@ function TopMenu({addCounter} : TopMenuProps) {
     <>
         <div className="row topMenu">
         <div className="col d-flex align-items-center justify-content-center">
-            <button type="button" className="btn btn-primary w-20 add-btn" onClick={OnAddCounterClicked}>
+            <button id="AddCunterBtn" type="button" className="btn btn-primary w-30 add-btn" onClick={OnAddCounterClicked}>
                 Add Counter
             </button>
         </div>

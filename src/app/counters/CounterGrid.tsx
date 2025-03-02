@@ -5,18 +5,12 @@ import "./CounterData";
 type CounterGridProps = {
     counters: Map<string, number>,
     setCounters: (counters: Map<string, number>) => void,
-    removeCounter: (label: string) => boolean
+    removeCounter: (label: string) => Promise<boolean>,
+    updateValue: (value: number, label: string) => Promise<boolean>
 }
 
-function CounterGrid({counters, setCounters, removeCounter} : CounterGridProps)  {
+function CounterGrid({counters, setCounters, removeCounter, updateValue} : CounterGridProps)  {
     
-
-    const updateValue = (val: number, label: string) => {
-        const newCounters = new Map(counters);
-        newCounters.set(label, val);
-        setCounters(newCounters);
-    };
-
     return (
         <div className="container d-flex flex-wrap align-items-center justify-content-center">
             {Array.from(counters.entries()).map(([label, value]) => ( 

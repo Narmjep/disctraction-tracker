@@ -3,8 +3,8 @@ import usePlaceholder from "react-bootstrap/esm/usePlaceholder";
 type CounterProps = {
     label: string,
     value: number,
-    updateValue: (value: number, label: string) => void,
-    removeCounter: (label: string) => boolean
+    updateValue: (value: number, label: string) => Promise<boolean>,
+    removeCounter: (label: string) => Promise<boolean>
 }
 
 function Counter({label, value , updateValue, removeCounter} : CounterProps) {
