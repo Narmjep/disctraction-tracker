@@ -1,6 +1,13 @@
 import usePlaceholder from "react-bootstrap/esm/usePlaceholder";
 
-function Counter({label, value , updateValue} : {label: string, value: number, updateValue: (value: number, label: string) => void}) {
+type CounterProps = {
+    label: string,
+    value: number,
+    updateValue: (value: number, label: string) => void,
+    removeCounter: (label: string) => boolean
+}
+
+function Counter({label, value , updateValue, removeCounter} : CounterProps) {
 
     const incrementCounter = () => {
         updateValue(value + 1, label);
@@ -17,14 +24,10 @@ function Counter({label, value , updateValue} : {label: string, value: number, u
         updateValue(0, label);
     }
 
-    const deleteCounter = () => {
-        
-    }
-
     return(
     <>
         <div className="container mt-3 mb-2 counter rounded d-flex flex-column align-items-center position-relative">
-            <button type="button" className="btn btn-danger position-absolute top-0 end-0 m-1" onClick={deleteCounter}>
+            <button type="button" className="btn btn-danger position-absolute top-0 end-0 m-1" onClick={()=>{removeCounter(label)}}>
                 X
             </button>
             <div className="counter-label mt-1 flex-grow-1 mb-5">{label}</div>
