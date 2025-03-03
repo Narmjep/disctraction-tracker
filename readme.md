@@ -1,7 +1,8 @@
 # Distraction Tracker
 
-![](distraction-tracker.ico)
-
+<p align="center">
+  <img src="distraction-tracker.ico" />
+</p>
 
 ## Description
 
