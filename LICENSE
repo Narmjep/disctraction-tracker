@@ -22,6 +22,6 @@ SOFTWARE.
 
 ---
 # Exception for Certain Assets
-The files `distraction-tracker.png` and `distraction-tracker.ico` files included in this repository
+The files `distraction-tracker.png` and `distraction-tracker.ico` included in this repository
 are **not** covered under the MIT License. These files are the exclusive property of
 Narmjep and may not be used, modified, or redistributed without explicit permission.
